@@ -10,15 +10,15 @@ N_SAMPLES = 1000
  
 # ── Distribution parameters ────────────────────────────────────────────────────
 # Gumbel: parameterized by location u and scale beta
-U_WIND   = 3.467   # kN  (location)
-BETA_WIND = 1.200  # kN  (scale)
+U_WIND   = 10.651   # kN  (location)
+BETA_WIND = 3.688  # kN  (scale)
  
 # Lognormal: chaospy uses (mu, sigma) of the *underlying normal*
 # i.e. ln(X) ~ N(lambda, xi^2)
 LAMBDA_SNOW = 0.747   # log-mean
 XI_SNOW     = 0.256   # log-std
  
-LAMBDA_E    = 26.021  # log-mean  (Pa)
+LAMBDA_E  = np.log(200) - 0.03**2 / 2   # GPa
 XI_E        = 0.030   # log-std
  
 # ── Construct marginal distributions ──────────────────────────────────────────
