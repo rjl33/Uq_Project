@@ -1,0 +1,3 @@
+time,max_disp_x,max_disp_y,max_force_x,max_force_y,max_moment_z,min_disp_x,min_disp_y,min_moment_z
+0,0,0,0,0,0,0,0,0
+1,0.02437016809415,0,33158.22769681,12209.523183567,24052.597933082,0,-0.0165405612481,-33726.334726724

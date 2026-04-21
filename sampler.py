@@ -18,7 +18,7 @@ BETA_WIND = 1.200  # kN  (scale)
 LAMBDA_SNOW = 0.747   # log-mean
 XI_SNOW     = 0.256   # log-std
  
-LAMBDA_E    = 26.021  # log-mean  (Pa)
+LAMBDA_E    = np.log(200) - 0.03**2 / 2  # log-mean  (GPa)
 XI_E        = 0.030   # log-std
  
 # ── Construct marginal distributions ──────────────────────────────────────────
