@@ -312,14 +312,13 @@ QOIS = {
 INPUT_LABELS = ["$F_{wind}$", "$w_{snow}$", "$E$"]
  
 # ── Distributions ─────────────────────────────────────────────────────────────
-U_WIND      = 3.467
-BETA_WIND   = 1.200
-LAMBDA_SNOW = 0.747
-XI_SNOW     = 0.256
- 
-dist_wind = cp.GeneralizedExtreme(shape=0, scale=BETA_WIND, shift=U_WIND)
-dist_snow = cp.LogNormal(mu=LAMBDA_SNOW, sigma=XI_SNOW)
-dist_E    = cp.LogNormal(mu=np.log(200) - 0.03**2/2, sigma=0.030)  # E in GPa
+A_WIND, B_WIND = 7.30,   0.570   # Wind load [kN]
+A_SNOW, B_SNOW = 14.29,  0.153   # Snow load [kN/m]
+A_E,    B_E    = 1111.1, 0.180   # Young's modulus [GPa]
+
+dist_wind = cp.Gamma(A_WIND, scale=B_WIND)
+dist_snow = cp.Gamma(A_SNOW, scale=B_SNOW)
+dist_E    = cp.Gamma(A_E,    scale=B_E)
 joint     = cp.J(dist_wind, dist_snow, dist_E)
  
 # ── Load MC results ────────────────────────────────────────────────────────────

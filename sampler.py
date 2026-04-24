@@ -10,24 +10,14 @@ N_SAMPLES = 1000
  
 # ── Distribution parameters ────────────────────────────────────────────────────
 # Gumbel: parameterized by location u and scale beta
-U_WIND   = 10.651   # kN  (location)
-BETA_WIND = 3.688  # kN  (scale)
- 
-# Lognormal: chaospy uses (mu, sigma) of the *underlying normal*
-# i.e. ln(X) ~ N(lambda, xi^2)
-LAMBDA_SNOW = 0.747   # log-mean
-XI_SNOW     = 0.256   # log-std
- 
-LAMBDA_E  = np.log(200) - 0.03**2 / 2   # GPa
-XI_E        = 0.030   # log-std
- 
-# ── Construct marginal distributions ──────────────────────────────────────────
-dist_wind = cp.GeneralizedExtreme(shape=0, scale=BETA_WIND, shift=U_WIND)
-dist_snow  = cp.LogNormal(mu=LAMBDA_SNOW, sigma=XI_SNOW)
-dist_E     = cp.LogNormal(mu=LAMBDA_E,    sigma=XI_E)
- 
-# ── Joint distribution (independent inputs) ───────────────────────────────────
-joint = cp.J(dist_wind, dist_snow, dist_E)
+A_WIND, B_WIND = 7.30,   0.570   # Wind load [kN]
+A_SNOW, B_SNOW = 14.29,  0.153   # Snow load [kN/m]
+A_E,    B_E    = 1111.1, 0.180   # Young's modulus [GPa]
+
+dist_wind = cp.Gamma(A_WIND, scale=B_WIND)
+dist_snow = cp.Gamma(A_SNOW, scale=B_SNOW)
+dist_E    = cp.Gamma(A_E,    scale=B_E)
+joint     = cp.J(dist_wind, dist_snow, dist_E)
  
 # ── Latin Hypercube Sampling ───────────────────────────────────────────────────
 samples = joint.sample(N_SAMPLES, rule="latin_hypercube", seed=SEED)
