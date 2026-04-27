@@ -21,8 +21,8 @@ import pandas as pd
 # ── Paths ──────────────────────────────────────────────────────────────────────
 MOOSE_DIR   = "/home/rjl64/projects/moose/UQ_project"
 TEMPLATE_I  = os.path.join(MOOSE_DIR, "steel_frame.i")
-SAMPLES_CSV = os.path.join(MOOSE_DIR, "quadrature_samples.csv")
-RESULTS_CSV = os.path.join(MOOSE_DIR, "results.csv")
+SAMPLES_CSV = os.path.join(MOOSE_DIR, "samples.csv")
+RESULTS_CSV = os.path.join(MOOSE_DIR, "results_1000.csv")
 MOOSE_CMD   = "mpiexec -n 16 ../modules/solid_mechanics/solid_mechanics-opt"
 
 # ── Nominal values (must match template .i file) ───────────────────────────────
