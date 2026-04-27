@@ -12,7 +12,7 @@ N_SAMPLES = 1000
 # Gumbel: parameterized by location u and scale beta
 A_WIND, B_WIND = 7.30,   0.570   # Wind load [kN]
 A_SNOW, B_SNOW = 14.29,  0.153   # Snow load [kN/m]
-A_E,    B_E    = 1111.1, 0.180   # Young's modulus [GPa]
+A_E, B_E = 1111.1, 0.180e9   # Young's modulus [GPa]
 
 dist_wind = cp.Gamma(A_WIND, scale=B_WIND)
 dist_snow = cp.Gamma(A_SNOW, scale=B_SNOW)
