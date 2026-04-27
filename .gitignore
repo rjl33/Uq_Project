@@ -1,0 +1,6 @@
+# MOOSE simulation outputs
+run_*.e
+run_*.csv
+
+# Optional broader rules (only if safe for your project)
+*.out
